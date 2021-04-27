@@ -1,0 +1,53 @@
+{% extends 'spycraft.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <style>
+        .tr {
+            border: 1px solid #9cfd5a;
+            border-collapse: collapse;
+            padding: 15px;
+            width: 60%;
+            margin-left: 30%;
+        }
+
+        #t01 tr:nth-child(even) {
+            background-color: #eee;
+        }
+
+        #t01 tr:nth-child(odd) {
+            background-color: #fff;
+        }
+
+        #t01 th {
+            color: white;
+            background-color: black;
+        }
+    </style>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <div style="overflow-x:auto;">
+        <table class="tr" style="color: white;">
+            <tr class="tr">
+                <th style="font-size: 22px; font-family: 'Montserrat Medium'">Code Name</th>
+                <th style="font-size: 20px; font-family: 'Montserrat Medium'">Name</th>
+                <th style="font-size: 20px; font-family: 'Montserrat Medium'">ID</th>
+            </tr>
+            {% for asset in assets %}
+
+                <tr class="tr">
+                    <th style="color: #4CAF50;font-size: 22px; font-family: 'Montserrat Medium'">{{ asset.code_name }}</th>
+                    <th style="font-size: 20px; font-family: 'Montserrat Medium">{{ asset.first_name }} {{ asset.last_name }}</th>
+                    <th style="font-size: 20px; font-family: 'Montserrat Medium">{{ asset.pk }}</th>
+                </tr>
+
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}

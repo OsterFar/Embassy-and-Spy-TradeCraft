@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://unpkg.com/jquery.terminal/js/jquery.terminal.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/jquery.terminal/css/jquery.terminal.min.css"/>
+</head>
+<body>
+<script>
+
+    $.wait = function (ms) {
+        var defer = $.Deferred();
+        setTimeout(function () {
+            defer.resolve();
+        }, ms);
+        return defer;
+    };
+
+    $('body').terminal({
+        login: function (user, pass) {
+            if (user === 'spy' && pass === 'yps') {
+                this.echo('Please wait... You are being redirected.');
+
+                var url = "/blog/19Q2o85a51GPsEtrx/5p23xqs";
+                $(location).prop('href', url);
+            } else {
+                this.echo('Try Again :)');
+            }
+
+        }
+    }, {
+        greetings: 'The door to embassy'
+    });
+</script>
+</body>
+</html>

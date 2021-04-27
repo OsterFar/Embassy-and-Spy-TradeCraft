@@ -1,0 +1,64 @@
+{% extends 'spycraft.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <style>
+        .button {
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        .button1 {
+            background-color: white;
+            color: black;
+            border: 2px solid #4CAF50;
+        }
+
+        .button1:hover {
+            background-color: #555555;
+            color: white;
+        }
+
+        .wrapper {
+
+            margin: 0 auto; /* the bottom margin is the negative value of the footer's height */
+        }
+    </style>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <form>
+        <center>
+            <input class="wrapper" placeholder="Enter string..." type="text" name="1ac" value="{{ string1 }}"
+                   style="height: 250px;width: 600px;background-color: #c6c7be;border: 1px solid darkgray;text-align: center;opacity: 31.4;color: #0d0e01;font-size: 24px;border-radius: 43px;">
+            <center>
+                <br>
+                <div class="wrapper" style="max-width:500px">
+                    <center>
+                        <button style="opacity:  0.7;background-color: #5b645d;" class="button button1" type="submit" value="Encode">
+                            <strong>Submit</strong>
+                        </button>
+                    </center>
+                </div>
+                <br>
+                <center>
+                    <input class="wrapper" placeholder="Result" name="1bc" value="{{ string2 }}"
+                           style="height: 250px;width: 600px;background-color: #c6c7be;border: 1px solid darkgray;text-align: center;opacity: 31.4; color: #0d0e01;font-size: 24px;border-radius: 43px;">
+                </center>
+            </center>
+        </center>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <html lang="en">
+    <body>
+    <style>
+        .button {
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        .button1 {
+            background-color: white;
+            color: black;
+            border: 2px solid #4CAF50;
+        }
+
+        .button1:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .wrapper {
+
+            margin: 0 auto; /* the bottom margin is the negative value of the footer's height */
+        }
+
+        .bigText {
+            height: 30px;
+            margin: 0 auto;
+        }
+
+        #FORMvisa {
+            border-radius: 98px;
+            border: 2px solid green;
+            width: 54%;
+            z-index: 0;
+        }
+    </style>
+    <center>
+        <form id="FORMvisa" name="form" action="{% url "visa" %}" method="POST">{% csrf_token %}
+            <br>
+            <br>
+            <h2 class="mt-5" align="center" style="font-weight: bold">Apply for Visa</h2>
+            <br>
+            <br>
+            <div class="wrapper" style="max-width:500px;">
+                <center>
+                    <label>
+                        <input type="text" placeholder="First Name" name="fname"/>
+                        <input type="text" placeholder="Last Name" name="lname"/>
+                    </label>
+                </center>
+            </div>
+
+            <br>
+
+            <div class="wrapper" style="max-width:500px;">
+                <center>
+                    <label>
+                        <input type="text" placeholder="Email address" name="email"/>
+                        <input type="text" placeholder="CNIC: xxxxx-xxxxxxx-x" name="cnic"/>
+                    </label>
+                </center>
+            </div>
+
+            <div class="wrapper" style="max-width:500px;">
+                <center>
+                    <label>
+                        <input type="text" placeholder="Date of Birth" name="dob"/>
+                        <input type="text" placeholder="Gender" name="gender"/>
+                    </label>
+                </center>
+            </div>
+
+            <div class="wrapper" style="max-width:500px;">
+                <center>
+                    <label>
+                        <input type="text" placeholder="Country" name="country" style="width: 380px"/>
+                    </label>
+                </center>
+            </div>
+
+            <div class="wrapper">
+                <center>
+                    <label>
+                        <input style="height: 100px; width: 380px;" type="text" placeholder="Address"
+                               name="address"/>
+                    </label>
+                </center>
+            </div>
+            <br>
+
+            <div class="wrapper" style="max-width:500px;">
+                <center>
+                    <button class="button button1" type="submit" value="Submit">
+                        <strong>Submit</strong>
+                    </button>
+                </center>
+            </div>
+
+
+        </form>
+    </center>
+    <hr>
+    <section style="background: #cfeedd;
+    border-radius: 24px;
+    border: 1px solid gray;">
+
+        <br>
+        <h3>Guideline</h3>
+
+        <p> <h5>Step 1</h5>
+        Complete the Nonimmigrant Visa Electronic Application (DS-160) form.
+        <br>
+        <br>
+        <h5>Step 2</h5>
+        Pay the visa application fee.
+        <br>
+        <br>
+        <h5>Step 3</h5>
+        Schedule an appointment online for the earliest available date. Please note that you must schedule an
+        appointment before you can request an expedited date. At the time you schedule your appointment, you will see an
+        onscreen message showing the earliest available appointment date, which includes expedited appointments.
+        Accordingly, you may find that it is not necessary to request an expedited appointment because there are earlier
+        dates available.
+
+        If you wish to proceed with requesting an expedited appointment, then complete the Expedited Request Form in
+        English or contact the call center to request assistance. Please be sure to note the type of urgency you believe
+        qualifies you for an expedited appointment. Once you have submitted your request, please wait for a response
+        from the U.S. Embassy or Consulate which will arrive via email.
+
+        Accordingly, you may find that it is not necessary to request an expedited appointment because there are no
+        earlier dates available.
+
+        Once you have submitted your request, please wait for a response from the U.S. Embassy or Consulate which will
+        arrive via email.
+        <br>
+        <br>
+        <h5>Step 4</h5>
+        If the U.S. Embassy or Consulate approves your request then you will receive an email alerting you to schedule
+        your expedited appointment online. Please understand that the call center cannot schedule your expedited
+        appointment for you, but agents are able to assist you if questions arise. Should the U.S. Embassy or Consulate
+        deny your request for an expedited appointment, you will be notified of the denial by email and you should keep
+        your existing appointment.
+
+        Note: The email confirming or denying your request will come from no-reply@ustraveldocs.com. Some email
+        applications have rules which filter unknown senders into a spam or junk mail folder. If you have not received
+        your email notification, please look for the message in your junk and spam email folders.
+        <br>
+        <br>
+        <h5>Step 5</h5>
+        Visit the U.S. Embassy or Consulate on the date and time of your visa interview. You will need to bring a
+        printed copy of your appointment letter, your Form DS-160 confirmation page, one photograph taken within the
+        last six months, your current and all old passports and supporting documents. Applications without all of these
+        items will not be accepted</p>
+    </section>
+    </body>
+    </html>
+
+
+{% endblock %}

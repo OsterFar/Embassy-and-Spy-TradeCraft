@@ -1,0 +1,137 @@
+{% extends 'spycraft.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <style>
+        .wrapper {
+            position: static;
+            margin-top: 50px;
+            right: 800px;
+        }
+
+        .wrapper1 {
+            position: fixed;
+            top: 100px;
+            right: 100px;
+        }
+
+        .t1, .tr1 {
+            border: 1px solid #9cfd5a;
+            border-collapse: collapse;
+            padding: 75px;
+            width: 80%;
+            margin-left: 20%;
+        }
+
+        #t01 tr:nth-child(even) {
+            background-color: #eee;
+        }
+
+        #t01 tr:nth-child(odd) {
+            background-color: #fff;
+        }
+
+        #t01 th {
+            color: white;
+            background-color: black;
+        }
+
+        th {
+            padding: 34px;
+        }
+
+        .tr2 {
+            border: 1px solid #9cfd5a;
+            border-collapse: collapse;
+            padding: 15px;
+            width: 60%;
+            margin-left: 30%;
+        }
+    </style>
+
+    <body>
+    {% if alert_flag_t %}
+        <div class="alert alert-success" role="alert">
+            1 record deleted successfully.
+        </div>
+    {% endif %}
+    {% if alert_flag_f %}
+        <div class="alert alert-danger" role="alert">
+            There was an error in deletion.
+        </div>
+    {% endif %}
+
+    <script>
+        function gotoURL() {
+            window.location = 'dasset/' + document.getElementById('assetID').value;
+        }
+    </script>
+
+    <center>
+        <form name="form" action="deasset" method="POST">{% csrf_token %}
+            <div class="wrapper1">
+                <div class="wrapper1" style="top: -3px;position: fixed;right: 102px;">
+                    <center>
+                        <label for="assetID"></label>
+                        <input type="text" name="assetID" id="assetID" class="form-control" placeholder="asset ID">
+                        <br>
+                        <input type=button class="btn btn-primary"
+                               onClick="gotoURL()"
+                               value="Delete" style="font-size: 18px;top: 19px;position: fixed;right: 10px;">
+                    </center>
+                </div>
+            </div>
+        </form>
+    </center>
+
+    <!--
+    <div class="wrapper">
+        <div class="wrapper">
+            <center>
+                <h3 style="color: white">CODENAME asset_ID</h3>
+                {% for asset in assets %}
+                    <h4 style="color: white">{{ asset.code_name }} {{ asset.asset_id }}</h4>
+
+                    <form action="deasset" method="POST" style="float: right">
+                        <button class="btn btn-primary" type="submit">Delete</button>
+                    </form>
+                {% endfor %}
+            </center>
+        </div>
+    </div>
+    !-->
+    <div class="wrapper" style="overflow-x:auto;">
+        <div class="wrapper">
+            <table class="t1"
+                   style="color: white;/*! position: ; */position: absolute;right: 0px;">
+
+                <tr class="tr1">
+                    <th style="font-size: 22px; font-family: Arial">Code Name</th>
+                    <th style="font-size: 20px; font-family: Arial">Name</th>
+                    <th style="font-size: 20px; font-family: Arial">ID</th>
+                    <th style="font-size: 20px; font-family: Arial">Action</th>
+                </tr>
+                {% for asset in assets %}
+
+                    <tr id="tr1">
+                        <th class="tr2"
+                            style="color: #4CAF50;font-size: 22px; font-family: 'Arial'">{{ asset.code_name }}</th>
+                        <th class="tr2"
+                            style="font-size: 20px; font-family: Arial">{{ asset.first_name }} {{ asset.last_name }}</th>
+                        <th class="tr2" id="assetID{{ i }}"
+                            style="font-size: 20px; font-family: Arial">{{ asset.pk }}</th>
+                        <th>
+                            <input type=button class="btn btn-primary" style="font-size: 18px"
+                                   onClick="window.location = 'dasset/' +  {{ asset.pk }}" value="Delete">
+                        </th>
+                    </tr>
+
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    </body>
+
+{% endblock %}

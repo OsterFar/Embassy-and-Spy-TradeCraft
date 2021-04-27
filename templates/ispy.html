@@ -1,0 +1,116 @@
+{% extends 'spycraft.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <style>
+        .button {
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        .button1 {
+            background-color: white;
+            color: black;
+            border: 2px solid #4CAF50;
+        }
+
+        .button1:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .wrapper {
+
+            margin: 0 auto; /* the bottom margin is the negative value of the footer's height */
+        }
+
+        .bigText {
+            height: 30px;
+            margin: 0 auto;
+        }
+
+        #FORMvisa {
+            border-radius: 98px;
+            border: 2px solid green;
+            width: 54%;
+            z-index: 0;
+            margin: 95px;
+            margin-bottom: 95px;
+            margin-bottom: 5px;
+        }
+    </style>
+    <body>
+    {% if alert_flag_t %}
+        <div class="alert alert-success" role="alert">
+            1 record inserted successfully.
+        </div>
+    {% endif %}
+    {% if alert_flag_f %}
+        <div class="alert alert-danger" role="alert">
+            There was an error in insertion.
+        </div>
+    {% endif %}
+    <center>
+        <form id="FORMvisa" name="form" action="{% url "blog:ispy" %}" method="POST">{% csrf_token %}
+            <br>
+            <br>
+            <img src= "https://pngimg.com/uploads/spy/spy_PNG36.png" style="height: 156px;width: 200px;">
+            <h2 class="mt-5" align="center" style="font-weight: bold ;color:white;">Insert a record</h2>
+            <br>
+            <br>
+            <div class="wrapper" style="max-width:500px;">
+                <center>
+                    <label>
+                        <input type="text" placeholder="First Name" name="first_name"/>
+                        <input type="text" placeholder="Last Name" name="last_name"/>
+                    </label>
+                </center>
+            </div>
+
+            <br>
+
+            <div class="wrapper" style="max-width:500px;">
+                <center>
+                    <label>
+                        <input type="text" placeholder="Employee ID" name="emp_id"/>
+                        <input type="text" placeholder="Spy ID" name="spy_id"/>
+                    </label>
+                </center>
+            </div>
+
+            <br>
+
+            <div class="wrapper" style="max-width:500px;">
+                <center>
+                    <label>
+                        <input type="text" placeholder="Codename" name="code_name" style="width: 380px"/>
+                    </label>
+                </center>
+            </div>
+
+            <br>
+
+            <div class="wrapper" style="max-width:500px;">
+                <center>
+                    <button class="button button1" type="submit" value="Submit">
+                        <strong>Submit</strong>
+                    </button>
+                </center>
+            </div>
+
+
+        </form>
+    </center>
+    </body>
+
+{% endblock %}
